@@ -163,19 +163,24 @@ body::before {
 }
 
 .transparent-img-block {
-    background: transparent;
-    box-shadow: none;
+    background: none !important;
+    box-shadow: none !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0 0 0;
+    padding: 0!important;
+    margin: 2rem 0 0 0;
+    border: none !important;
 }
 
 .center-img {
     width: 400px;
     height: 400px;
     object-fit: cover;
-    border-radius: 16px; 
+    border-radius: 16px;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    background: none !important;
 }
 
 .projects-grid {
