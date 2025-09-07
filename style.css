@@ -140,10 +140,10 @@ body::before {
 }
 
 #about.content-section {
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
 }
 
 .about-block {
@@ -283,11 +283,11 @@ footer {
     padding-top: 1.5rem;
 }
 
-.about-flex {
+/* .about-flex {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-}
+} */
 
 .about-img {
     width: 120px;
