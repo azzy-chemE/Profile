@@ -139,6 +139,32 @@ body::before {
     margin-bottom: 2rem;
 }
 
+.about-block {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    animation: slideUpIn 0.5s;
+    transition: box-shadow 0.3s;
+}
+
+.about-block:not(:first-child) {
+    margin-top: 2rem;
+}
+
+.transparent-img-block {
+    background: transparent;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 0 0;
+}
+
 .projects-grid {
     display: flex;
     gap: 1.5rem;

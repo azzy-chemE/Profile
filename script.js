@@ -50,11 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         const sections = document.querySelectorAll('.content-section');
-        sections.forEach(sec => sec.classList.remove('active','anim-in','anim-out'));
-        const footer = document.querySelector('footer');
+        const next = document.getElementById(targetId);
         const current = document.querySelector('.content-section.active');
+        const footer = document.querySelector('footer');
 
-        if (current && animate) {
+        sections.forEach(sec => {
+            if (sec !== current && sec !== next) {
+                sec.classList.remove('active', 'anim-in', 'anim-out');
+            }
+        });
+        
+        // sections.forEach(sec => sec.classList.remove('active','anim-in','anim-out'));
+        // const footer = document.querySelector('footer');
+        // const current = document.querySelector('.content-section.active');
+
+        if (current && animate && current !== next) {
             current.classList.remove('anim-in');
             current.classList.add('anim-out');
             footer.classList.remove('anim-in');
@@ -74,8 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => footer.classList.remove('anim-in'), 500);
             }, 500);
         } else {
-            // Potentially add back if it doesn't work: if (current) current.classList.remove('active');
-            const next = document.getElementById(targetId);
+            if (current) current.classList.remove('active', 'anim-in', 'anim-out');
             if (next) next.classList.add('active');
         }
     }
