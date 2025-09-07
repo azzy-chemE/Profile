@@ -231,9 +231,13 @@ footer {
 }
 
 .typed-text {
-    color: #4851ff;
+    color: #dbfcdd;
     font-weight: bold;
     transition: color 0.3s;
+}
+
+.static-text {
+    color: #fff;
 }
 
 @keyframes slideUpIn {
