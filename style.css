@@ -21,7 +21,7 @@ body::before {
     width: 100vw;
     height: 100vh;
     background: url('background.gif') center center / cover no-repeat;
-    opacity: 0.25;
+    opacity: 0.10;
     z-index: -1;
     pointer-events: none;
 }
