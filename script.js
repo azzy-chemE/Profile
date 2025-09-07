@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const header = document.querySelector('.animation h1');
+    const typedSpan = document.querySelector('.typed-text');
     const texts = [
         "Chemical Engineer",
         "Full-Stack Developer",
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function type () {
         if (typing) {
             if (charIndex < texts[textIndex].length) {
-                header.textContent = texts[textIndex].slice(0,charIndex + 1);
+                typedSpan.textContent = texts[textIndex].slice(0,charIndex + 1);
                 charIndex++;
                 setTimeout(type,100);
             } else {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         } else {
             if (charIndex > 0) {
-                header.textContent = texts[textIndex].slice(0,charIndex - 1);
+                typedSpan.textContent = texts[textIndex].slice(0,charIndex - 1);
                 charIndex--;
                 setTimeout(type,50);
             } else {
