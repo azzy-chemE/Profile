@@ -49,7 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.classList.toggle('active', btn.dataset.target === targetId);
         });
 
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(sec => sec.classList.remove('active','anim-in','anim-out'));
+        const footer = document.querySelector('footer');
         const current = document.querySelector('.content-section.active');
+
         if (current && animate) {
             current.classList.remove('anim-in');
             current.classList.add('anim-out');
@@ -70,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => footer.classList.remove('anim-in'), 500);
             }, 500);
         } else {
-            if (current) current.classList.remove('active');
+            // Potentially add back if it doesn't work: if (current) current.classList.remove('active');
             const next = document.getElementById(targetId);
             if (next) next.classList.add('active');
         }
