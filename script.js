@@ -86,3 +86,13 @@ document.addEventListener('DOMContentLoaded', function() {
         activate('about', false);
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        aboutSection.classList.add('anim-in');
+        setTimeout(() => {
+            aboutSection.classList.remove('anim-in');
+        }, 500);
+        }
+    });
