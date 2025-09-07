@@ -201,6 +201,21 @@ footer {
     padding-top: 1.5rem;
 }
 
+.about-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.about-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.07);
+    flex-shrink: 0;
+}
+
 .typed-text {
     color: #4e54c8;
     font-weight: bold;
