@@ -164,3 +164,45 @@ footer {
         gap: 1rem;
     }
 }
+
+header.hero{
+    margin-bottom: 2.5rem;
+}
+
+header.description{
+    margin-bottom: 2.5rem;
+}
+
+.content-section {
+    margin-bottom: 1.5rem;
+    padding: 2.5rem 2rem;
+}
+
+.content-section h2{
+    margin-bottom: 1.5rem;
+}
+
+.content-section p{
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.projects-grid {
+    gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+}
+
+footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+}

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Chemical Engineer",
         "Full-Stack Developer",
         "Graphic Designer",
-        "Bird Advocate",
+        "Bird Advocate"
     ];
 
     let textIndex = 0;
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let typing = true;
 
     function type () {
+        if (!typedSpan) return;
         if (typing) {
             if (charIndex < texts[textIndex].length) {
                 typedSpan.textContent = texts[textIndex].slice(0,charIndex + 1);
