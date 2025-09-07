@@ -92,7 +92,7 @@ body::before {
 
 .about-center-img {
     display: flex;
-    jutify-content: center;
+    justify-content: center;
     margin: 2rem 0;
 }
 
