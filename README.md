@@ -24,7 +24,7 @@ On the "Resume" tab, click on the hyperlink to open my resume in a new tab and d
 
 ## Screenshot
 
-![Screenshot of the website in action.](https://siege.hackclub.com/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI3NHRmcjBiam00YW8wcm5kODAwdmFxZTUyNWt1IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiU2NyZWVuc2hvdCAyMDI1LTA5LTA3IDE3LjI2LjAwLnBuZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1NjcmVlbnNob3QlMjAyMDI1LTA5LTA3JTIwMTcuMjYuMDAucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wOS0wN1QyMTozNzozMS40MzBaIiwicHVyIjoiYmxvYl9rZXkifX0=--9a94472513d91ecc68adc862c71ae7e15f1c9c0c/Screenshot%202025-09-07%2017.26.00.png) 
+![Screenshot of the website in action.](https://raw.githubusercontent.com/azzy-chemE/Profile/refs/heads/main/Screenshot%202025-09-07%2017.26.00.png) 
 
 ## Credits
 
