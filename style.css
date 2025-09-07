@@ -149,7 +149,6 @@ body::before {
     width: 90%;
     position: relative;
     animation: slideUpIn 0.5s;
-    transition: box-shadow 0.3s;
 }
 
 .about-block:not(:first-child) {
@@ -163,6 +162,15 @@ body::before {
     justify-content: center;
     align-items: center;
     padding: 2rem 0 0 0;
+}
+
+.center-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px; 
+    opacity: 0.7;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
 .projects-grid {
@@ -303,12 +311,12 @@ footer {
     to {opacity: 0; transform: translateY(60px);}
 }
 
-.content-section.anim-out,
-footer.anim-out {
-    animation: slideDownOut 0.5s forwards;
-}
-
 .content-section.anim-in,
 footer.anim-in {
     animation: slideUpIn 0.5s;
+}
+
+.content-section.anim-out,
+footer.anim-out {
+    animation: slideDownOut 0.5s forwards;
 }

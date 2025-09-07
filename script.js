@@ -52,17 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const sections = document.querySelectorAll('.content-section');
         const next = document.getElementById(targetId);
         const current = document.querySelector('.content-section.active');
-        const footer = document.querySelector('footer');
 
         sections.forEach(sec => {
             if (sec !== current && sec !== next) {
                 sec.classList.remove('active', 'anim-in', 'anim-out');
             }
         });
-        
-        // sections.forEach(sec => sec.classList.remove('active','anim-in','anim-out'));
-        // const footer = document.querySelector('footer');
-        // const current = document.querySelector('.content-section.active');
 
         if (current && animate && current !== next) {
             current.classList.remove('anim-in');
@@ -74,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 current.classList.remove('active', 'anim-out');
                 footer.classList.remove('anim-out');
 
-                const next = document.getElementById(targetId);
                 if (next) {
                     next.classList.add('active', 'anim-in');
                     setTimeout(() => next.classList.remove('anim-in'), 500);
