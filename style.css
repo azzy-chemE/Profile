@@ -139,6 +139,13 @@ body::before {
     margin-bottom: 2rem;
 }
 
+#about.content-section {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
+
 .about-block {
     background: #fff;
     border-radius: 16px;
