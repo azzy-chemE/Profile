@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.nav-btn');
     const footer = document.querySelector('footer');
 
-    function activate(targetId) {
+    function activate(targetId, animate = true) {
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.target === targetId);
         });
 
         const current = document.querySelector('.content-section.active');
-        if (current) {
+        if (current && animate) {
             current.classList.remove('anim-in');
             current.classList.add('anim-out');
             footer.classList.remove('anim-in');
@@ -69,25 +69,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => footer.classList.remove('anim-in'), 500);
             }, 500);
         } else {
+            if (current) current.classList.remove('active');
             const next = document.getElementById(targetId);
-            if (next) {
-                next.classList.add('active', 'anim-in');
-                setTimeout(() => next.classList.remove('anim-in'), 500);
-            }
-
-            footer.classList.add('anim-in');
-            setTimeout(() => footer.classList.remove('anim-in'), 500);
+            if (next) next.classList.add('active');
         }
     }
 
     buttons.forEach(btn => {
-        btn.addEventListener('click', () => activate(btn.dataset.target));
+        btn.addEventListener('click', () => activate(btn.dataset.target, true));
     });
 
     const hash = location.hash.replace('#', '');
     if (hash && document.getElementById(hash)) {
-        activate(hash);
+        activate(hash, false);
     } else {
-        activate('about');
+        activate('about', false);
     }
 });
