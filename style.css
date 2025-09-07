@@ -90,6 +90,33 @@ body::before {
     to { opacity: 1; transform: translateY(0);}
 }
 
+.about-center-img {
+    display: flex;
+    jutify-content: center;
+    margin: 2rem 0;
+}
+
+.center-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba (0,0,0,0.08)
+}
+
+.about-cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.about-cards .card {
+    min-width: 180px;
+    flex: 1;
+}
+
 .content {
     max-width: 900px;
     margin: 0 auto;

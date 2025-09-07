@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     const typedSpan = document.querySelector('.typed-text');
     const texts = [
-        "Chemical Engineer",
-        "Full-Stack Developer",
-        "Graphic Designer",
-        "Bird Advocate"
+        "future chemical engineer",
+        "aspiring full-stack developer",
+        "graphic designer and digital illustrator",
+        "mom of six birds standing proud for bird conservation",
+        "debater, creative writer, and public policy advocate"
     ];
 
     let textIndex = 0;
