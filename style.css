@@ -10,6 +10,20 @@ body {
     background: linear-gradient(135deg, #e0ffe0 0%, #b3c6ff 100%);
     color: #222;
     min-height: 100vh;
+    position: relative;
+    z-index: 0;
+}
+
+body::before {
+    content:"";
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('background.gif') center center / cover no-repeat;
+    opacity: 0.25;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .sidebar {
