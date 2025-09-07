@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const footer = document.querySelector('footer');
 
     function activate(targetId) {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.target === targetId);
+        });
+
         const current = document.querySelector('.content-section.active');
         if (current) {
             current.classList.remove('anim-in');
