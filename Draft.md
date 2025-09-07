@@ -1,3 +1,5 @@
+# Unfinished CSS
+
 header {
     background: linear-gradient (120deg, #1d3557, #457b9d);
     color: white;
@@ -63,3 +65,54 @@ footer {
     text-align: center;
     padding: 1rem;
 }
+
+# Unfinished Javascript
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.nav-btn');
+    const footer = document.querySelector('footer');
+
+    function activate(targetId) {
+        const current = document.querySelector('.content-section.active');
+        if (current) {
+            current.classList.remove('anim-in');
+            current.classList.add('anim-out');
+            footer.classList.remove('anim-in');
+            footer.classList.add('anim-out');
+
+            setTimeout(() => {
+                current.classList.remove('active', 'anim-out');
+                footer.classList.remove('anim-out');
+
+                const next = document.getElementById(targetId);
+                if (next) {
+                    next.classList.add('active', 'anim-in');
+                    setTimeout(() => next.classList.remove('anim-in'), 500);
+                }
+
+                footer.classList.add('anim-in');
+                setTimeout(() => footer.classList.remove('anim-in'), 500);
+            }, 500);
+        } else {
+            const next = document.getElementById(targetId);
+            if (next) {
+                next.classList.add('active', 'anim-in');
+                setTimeout(() => next.classList.remove('anim-in'), 500);
+            }
+
+            footer.classList.add('anim-in');
+            setTimeout(() => footer.classList.remove('anim-in'), 500);
+        }
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => activate(btn.dataset.target));
+    });
+
+    const hash = location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        activate(hash);
+    } else {
+        activate('about');
+    }
+});
