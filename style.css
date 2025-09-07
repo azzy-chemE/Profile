@@ -7,7 +7,7 @@ body, h1, h2, h3, p, button, nav, aside, main, footer {
 }
 
 body {
-    background: linear-gradient(135deg, #e0ffe0 0%, #b3c6ff 100%);
+    background: linear-gradient(135deg, #b4d8b4 0%, #d2ddff 100%);
     color: #222;
     min-height: 100vh;
     position: relative;
@@ -21,13 +21,13 @@ body::before {
     width: 100vw;
     height: 100vh;
     background: url('background.gif') center center / cover no-repeat;
-    opacity: 0.10;
+    opacity: 0.1;
     z-index: -1;
     pointer-events: none;
 }
 
 .sidebar {
-    background: linear-gradient(180deg, #4e54c8 0%, #8f94fb 100%);
+    background: linear-gradient(180deg, #5fae8b 0%, #4dafa7 100%);
     color: #fff;
     width: 220px;
     min-height: 100vh;
@@ -119,7 +119,7 @@ body::before {
 }
 
 .card {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef5f3 100%);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     padding: 1rem;
@@ -130,23 +130,23 @@ body::before {
 
 .card h3 {
     margin-bottom: 0.5rem;
-    color: #4e54c8;
+    color: #2b8c6f;
 }
 
 #contact a {
-    color: #4e54c8;
+    color: #2b8c6f;
     text-decoration: underline;
     transition: color 0.2s;
 }
 
 #contact a:hover {
-    color: #8f94fb;
+    color: #72d4b3;
 }
 
 footer {
     margin-top: 2rem;
     text-align: center;
-    color: #4e54c8;
+    color: #2b8c6f;
     font-weight: 500;
     font-size: 1.1rem;
 }
@@ -231,7 +231,7 @@ footer {
 }
 
 .typed-text {
-    color: #4e54c8;
+    color: #4851ff;
     font-weight: bold;
     transition: color 0.3s;
 }
