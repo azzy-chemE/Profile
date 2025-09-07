@@ -11,3 +11,8 @@ HTML
 CSS
 
 JavaScript
+
+# Credits
+
+**Icon:** Drawn by Azzy Xiang
+**Background:** https://dribbble.com/shots/4689038-Chemistry/
