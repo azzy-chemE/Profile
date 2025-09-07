@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background: linear-gradient (120deg, #1d3557, #457b9d)
+    background: linear-gradient (120deg, #1d3557, #457b9d);
     color: white;
     padding: 2rem;
     text-align: center;
@@ -31,7 +31,8 @@ section {
 }
 .projects-grid {
     display: grid;
-    grid-template;columns: repeat (auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    columns: repeat (auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 .card {
