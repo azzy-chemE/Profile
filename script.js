@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "future chemical engineer",
         "aspiring full-stack developer",
         "graphic designer and digital illustrator",
-        "mom of six birds standing proud for bird conservation",
+        "pioneer for bird conservation",
         "debater, creative writer, and public policy advocate"
     ];
 

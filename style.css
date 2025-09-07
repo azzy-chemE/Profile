@@ -135,10 +135,21 @@ body::before {
     display: block;
 }
 
-#about {
+#about-1 {
     margin-bottom: 2rem;
 }
 
+#about-2 {
+    margin-bottom: 2rem;
+}
+
+#about-3 {
+    margin-bottom: 2rem;
+}
+
+#about-4 {
+    margin-bottom: 2rem;
+}
 .projects-grid {
     display: flex;
     gap: 1.5rem;
