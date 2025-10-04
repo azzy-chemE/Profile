@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+        <!-- This basically imports the Google fonts and style.css file that I need to use -->
+    
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,54 +20,62 @@
             <div class="brand-name">Menu</div>
         </div>
 
-        <!-- Note to self: Here is where I have to add additional menu tabs later on.-->
+        <!-- Note to self: Here is where I have to add additional menu tabs later on. -->
+        <!-- Follow this general template to add buttons, add matching sections with section id ;) -->
 
         <nav class="sidebar-nav">
-            <button class="nav-btn active" data-target="about">About</button>
-            <button class="nav-btn" data-target="projects">Projects</button>
-            <button class="nav-btn" data-target="contact">Contact</button>
-
-        <!-- Follow this general template to add buttons, add matching sections with section id ;)-->
-
-            <button class="nav-btn" data-target="resume">Resume</button>
-            <button class="nav-btn" data-target="gallery">Gallery</button>
+            <button class="nav-btn active" data-target="about">about</button>
+            <button class="nav-btn" data-target="projects">my cool stuff</button>
+            <button class="nav-btn" data-target="contact">get in touch</button>
+            <button class="nav-btn" data-target="resume">resume + involvements</button>
+            <button class="nav-btn" data-target="gallery">art & design gallery</button>
         </nav>
         <div class="sidebar-footer"></div>
     </aside>
 
     <main class="main">
         <header class="hero">
-            <!-- This is the fancy text typing part-->
+
+            <!-- This is the fancy text typing part -->
+        
             <h1>
                 <span class="static-text">Azzy, the&nbsp;</span>
                 <span class="typed-text"></span>
+
+            <!-- Testing some animations -->
                 <div class="centered-scroll-text hidden">Welcome to my profile!</div>
+
             </h1>
         </header>
     
         <div class="content">
             <section id="about" class="content-section active">
                 <div class="about-block">
-                <h2>About Me</h2>
+                <h2>a little bit about me</h2>
 
+                <!-- profile image !-->
                 <div class="transparent-img-block">
                 <img src="icon.png" alt="Centered" class="center-img">
                 </div>
 
+                <!-- about text 1 -->
+                <!-- note to self: Just duplicate these blocks to add more cards in the future.-->
+                
                 <div class="about-flex">
-                    <img src="icon.png" alt="Icon" class="about-img">
-                    <p>I'm a student passionate about chemistry, computer science, and engineering design. I love applying problem-solving to building meaningful projects and communities with a lasting impact. When I'm not swamped in studying, I run Bird2Branch, a social enterprise connecting students to careers in STEM while empowering the cause for environmental justice and bird conservation.</p>
+                    <p>hello! I'm azzy! I do a lot of things, but it all started with six pet birds... here's a picture of some of them!</p>
+                    <img src="birds.png" alt="Centered" class="center-img">
+                    
                 </div>
                 </div>
     
-                <!-- Some experimental stuff going on here-->
-                <!-- Note to self: Just duplicate these blocks to add more cards in the future.-->
+                <!-- about text 2 -->
             
                 <div class="about-block">
                     <h2> Fun Facts </h2>
                     <!-- <div class="about-flex"> -->
                     <p> I'll add stuff here later, but for now, just know that I love birds :)</p>
                     <!-- </div> -->
+            
                 </div>
                 
                 <div class="about-block">

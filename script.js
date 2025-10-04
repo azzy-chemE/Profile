@@ -105,16 +105,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
     const scrollText = document.querySelector('.centered-scroll-text');
-    function revealOnScroll() {
+    function revealScrollText() {
         if (!scrollText) return;
         const rect = scrollText.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         if (rect.top < windowHeight - 100) {
             scrollText.classList.add('visible');
             scrollText.classList.remove('hidden');
-            window.removeEventListener('scroll', revealOnScroll);
+            window.removeEventListener('scroll', revealScrollText);
         }
     }
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-    });
+    window.addEventListener('scroll', revealScrollText);
+    revealScrollText();
+
+    // Scroll-reveal for all main blocks
+    function revealOnScrollBlocks() {
+        document.querySelectorAll('.scroll-reveal-hidden').forEach(block => {
+            if (block.classList.contains('scroll-reveal-visible')) return;
+            const rect = block.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top < windowHeight - 60) {
+                block.classList.add('scroll-reveal-visible');
+                block.classList.remove('scroll-reveal-hidden');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScrollBlocks);
+    // In case already in view on load
+    revealOnScrollBlocks();
+});
