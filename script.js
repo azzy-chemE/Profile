@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
             coin.style.top = e.clientY + 'px';
         });
     }
-    
+
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
         aboutSection.classList.add('anim-in');
@@ -144,19 +144,22 @@ document.addEventListener('DOMContentLoaded', function () {
         showBlock(current);
     }
     
-    const scrollText = document.querySelector('.centered-scroll-text');
-    function revealScrollText() {
-        if (!scrollText) return;
-        const rect = scrollText.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        if (rect.top < windowHeight - 100) {
-            scrollText.classList.add('visible');
-            scrollText.classList.remove('hidden');
-            window.removeEventListener('scroll', revealScrollText);
-        }
+
+    // Reveal all .centered-scroll-text.extra-scroll-text on scroll
+    function revealScrollTexts() {
+        document.querySelectorAll('.centered-scroll-text.extra-scroll-text').forEach(el => {
+            if (el.classList.contains('scroll-reveal-hidden')) {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top < windowHeight - 60) {
+                    el.classList.add('scroll-reveal-visible');
+                    el.classList.remove('scroll-reveal-hidden');
+                }
+            }
+        });
     }
-    window.addEventListener('scroll', revealScrollText);
-    revealScrollText();
+    window.addEventListener('scroll', revealScrollTexts);
+    revealScrollTexts();
 
     function revealOnScrollBlocks() {
         document.querySelectorAll('.scroll-reveal-hidden').forEach(block => {

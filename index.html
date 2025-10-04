@@ -48,7 +48,7 @@
             <!-- EXPERIMENTAL: testing some animations-->
 
                 <div class="centered-scroll-text hidden">Welcome to my profile!</div>
-                <div class="centered-scroll-text extra-scroll-text scroll-reveal-visible" style="margin: 80px 0 0 0;">text1</div>
+                <div class="centered-scroll-text extra-scroll-text scroll-reveal-visible"style="margin: 80px 0 0 0;">text1</div>
                 <div class="centered-scroll-text extra-scroll-text scroll-reveal-hidden" style="margin: 80px 0 0 0;">text2</div>
                 <div class="centered-scroll-text extra-scroll-text scroll-reveal-hidden" style="margin: 80px 0 0 0;">text3</div>
                 <div class="centered-scroll-text extra-scroll-text scroll-reveal-hidden" style="margin: 80px 0 0 0;">text4</div>
@@ -62,33 +62,57 @@
             </h1>
         </header> 
     
+            <!-- carousel of about me-->
         <div class="content">
             <section id="about" class="content-section active">
                 <div class="about-blocks-carousel">
+
+                    <!-- first panel: would you like to go on an adventure?-->
                     <div class="about-block" style="display:block;">
 
-                        <h2>a little bit about me</h2>
+                        <h2>would you like to go on an adventure?</h2>
+                        <div class="about-flex">
+                            <p>please proceed if you would like to!</p>
+                        </div>
+                    </div>
 
+                    <!--second panel: actual about info -->
+
+                        <div class="about-block" style="display:none;">
+                        <h2>a little bit about me</h2>
                         <div class="transparent-img-block">
                             <img src="icon.png" alt="Centered" class="about-center-img">
-
                         </div>
                         <div class="about-flex">
                             <p>hello! I'm azzy! I do a lot of things, but it all started with six pet birds... here's a picture of some of them!</p>
                             <img src="birds.png" alt="Centered" class="center-img">
                         </div>
                     </div>
+
+                    <!--third panel: a few obsessions 1-->
                     <div class="about-block" style="display:none;">
                         <h2> Fun Facts </h2>
                         <p> I'll add stuff here later, but for now, just know that I love birds :)</p>
                     </div>
+
+                    <!--fourth panel: a few obsessions 2-->
                     <div class="about-block" style="display:none;">
                         <h2> Favorite Obsessions </h2>
                         <p> I'll add stuff here later as well...</p>
                     </div>
-                    <div class="transparent-img-block">
+
+                    <!--last page-->
+                    <div class="about-block" style="display:none;">
+                        <h2> Favorite Obsessions </h2>
+                        <p> I'll add stuff here later as well...</p>
+                    </div>
+
+                    <!--ending image-->
+                    <div class="transparent-img-block" style="display:none;">
                         <img src="centered-image.png" alt="Centered" class="center-img">
                     </div>
+
+                    <!--buttons-->
                     <div class="about-carousel-nav" style="text-align:center; margin-top:1em;">
                         <button id="about-prev" class="carousel-img-btn" style="display:inline-block;">
                             <img src="back.png" alt="Back" class="carousel-btn-img" />
