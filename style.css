@@ -163,6 +163,8 @@ body::before {
 
 .about-center-img {
     display: flex;
+    max-width: 420px;
+    max-height: 250px;
     justify-content: center;
     margin: 2rem 0;
 }
