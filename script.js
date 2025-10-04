@@ -134,53 +134,54 @@ document.addEventListener('DOMContentLoaded', function () {
         const prevBtn = document.getElementById('about-prev');
         const nextBtn = document.getElementById('about-next');
         let current = 0;
-
         function showBlock(idx) {
             aboutBlocks.forEach((block, i) => {
                 block.style.display = (i === idx) ? 'block' : 'none';
             });
-            // Back is on the left, Next is on the right
-            prevBtn.disabled = idx === aboutBlocks.length - 1;
-            nextBtn.disabled = idx === 0;
+            prevBtn.disabled = idx === 0;
+            nextBtn.disabled = idx === aboutBlocks.length - 1;
+            prevBtn.classList.toggle('disabled', prevBtn.disabled);
+            nextBtn.classList.toggle('disabled', nextBtn.disabled);
         }
 
-        // Back button goes forward (right)
         prevBtn.addEventListener('click', () => {
-            if (current < aboutBlocks.length - 1) {
-                current++;
+            if (current > 0) {
+                current--;
                 showBlock(current);
             }
         });
-        // Next button goes backward (left)
+        // Next (right) goes to next
         nextBtn.addEventListener('click', () => {
-            if (current > 0) {
-                current--;
+            if (current < aboutBlocks.length - 1) {
+                current++;
                 showBlock(current);
             }
         });
         showBlock(current);
     }
     
-    function revealScrollTexts() {
-        document.querySelectorAll('.centered-scroll-text.extra-scroll-text').forEach((el, i) => {
+    // Header scroll-list reveal: hide initially, reveal when each enters viewport
+    const headerList = document.querySelectorAll('.header-scroll-list .extra-scroll-text');
+    headerList.forEach(el => {
+        el.style.display = 'none';
+        el.classList.add('scroll-reveal-hidden');
+    });
 
-            if (i === 0) {
-                el.classList.add('scroll-reveal-visible');
-                el.classList.remove('scroll-reveal-hidden');
-                return;
-            } 
-            if (el.classList.contains('scroll-reveal-hidden')) {
+    function revealHeaderList() {
+        headerList.forEach(el => {
+            if (el.style.display === 'none') {
                 const rect = el.getBoundingClientRect();
                 const windowHeight = window.innerHeight || document.documentElement.clientHeight;
                 if (rect.top < windowHeight - 60) {
+                    el.style.display = 'block';
                     el.classList.add('scroll-reveal-visible');
                     el.classList.remove('scroll-reveal-hidden');
                 }
             }
         });
     }
-    window.addEventListener('scroll', revealScrollTexts);
-    revealScrollTexts();
+    window.addEventListener('scroll', revealHeaderList);
+    revealHeaderList();
 
     function revealOnScrollBlocks() {
         document.querySelectorAll('.scroll-reveal-hidden').forEach(block => {
