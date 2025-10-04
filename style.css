@@ -29,6 +29,9 @@
     font-family: inherit;
     font-size: 1.5em;
     margin-top: 2em;
+    color: #fff !important;
+    letter-spacing: 0.02em;
+    font-weight: 500;
     opacity: 0;
     transition: opacity 1.2s ease;
 }
