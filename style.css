@@ -1,3 +1,7 @@
+.centered-scroll-text,
+.extra-scroll-text {
+    color: #fff !important;
+}
 
 #coin-cursor {
     position: fixed;
