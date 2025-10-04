@@ -1,3 +1,17 @@
+.centered-scroll-text {
+    text-align: center;
+    font-family: inherit;
+    font-size: 1.5em;
+    margin-top: 2em;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.centered-scroll-text.visible {
+    opacity: 1;
+}
+.centered-scroll-text.hidden {
+    opacity: 0;
+}
 
 body, h1, h2, h3, p, button, nav, aside, main, footer {
     font-family: 'Bitter', serif;

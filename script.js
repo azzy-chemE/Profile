@@ -103,4 +103,18 @@ document.addEventListener('DOMContentLoaded', function () {
             aboutSection.classList.remove('anim-in');
         }, 500);
         }
+    
+    const scrollText = document.querySelector('.centered-scroll-text');
+    function revealOnScroll() {
+        if (!scrollText) return;
+        const rect = scrollText.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top < windowHeight - 100) {
+            scrollText.classList.add('visible');
+            scrollText.classList.remove('hidden');
+            window.removeEventListener('scroll', revealOnScroll);
+        }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
     });
