@@ -125,29 +125,36 @@ document.addEventListener('DOMContentLoaded', function () {
             aboutBlocks.forEach((block, i) => {
                 block.style.display = (i === idx) ? 'block' : 'none';
             });
-            prevBtn.disabled = idx === 0;
-            nextBtn.disabled = idx === aboutBlocks.length - 1;
+            // Back is on the left, Next is on the right
+            prevBtn.disabled = idx === aboutBlocks.length - 1;
+            nextBtn.disabled = idx === 0;
         }
 
+        // Back button goes forward (right)
         prevBtn.addEventListener('click', () => {
-            if (current > 0) {
-                current--;
+            if (current < aboutBlocks.length - 1) {
+                current++;
                 showBlock(current);
             }
         });
+        // Next button goes backward (left)
         nextBtn.addEventListener('click', () => {
-            if (current < aboutBlocks.length - 1) {
-                current++;
+            if (current > 0) {
+                current--;
                 showBlock(current);
             }
         });
         showBlock(current);
     }
     
-
-    // Reveal all .centered-scroll-text.extra-scroll-text on scroll
     function revealScrollTexts() {
-        document.querySelectorAll('.centered-scroll-text.extra-scroll-text').forEach(el => {
+        document.querySelectorAll('.centered-scroll-text.extra-scroll-text').forEach((el, i) => {
+
+            if (i === 0) {
+                el.classList.add('scroll-reveal-visible');
+                el.classList.remove('scroll-reveal-hidden');
+                return;
+            } 
             if (el.classList.contains('scroll-reveal-hidden')) {
                 const rect = el.getBoundingClientRect();
                 const windowHeight = window.innerHeight || document.documentElement.clientHeight;

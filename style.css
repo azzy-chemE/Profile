@@ -103,8 +103,10 @@ body::before {
     top: 0;
     display: flex;
     flex-direction: column;
-         width: 28px;
-         height: 28px;
+        width: 38px;
+        height: 28px;
+        border-radius: 6px;
+        object-fit: contain;
     box-shadow: 2px 0 12px rgba(0,0,0,0.08);
     z-index: 10;
 }
