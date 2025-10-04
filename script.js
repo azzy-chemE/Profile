@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const next = document.getElementById(targetId);
         const current = document.querySelector('.content-section.active');
 
-        // Hide/show about carousel and front page text
         const aboutCarousel = document.querySelector('.about-blocks-carousel');
         const aboutNav = document.querySelector('.about-carousel-nav');
         const frontPageTexts = document.querySelectorAll('.centered-scroll-text, .extra-scroll-text');
