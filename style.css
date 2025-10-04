@@ -173,6 +173,19 @@ body::before {
     margin: 2rem 0;
 }
 
+.about-starter-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.starter-img {
+    max-width: 240px;
+    max-height: 180px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 .center-img {
     width: 400px;
     height: 400px;
