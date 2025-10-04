@@ -147,19 +147,62 @@ document.addEventListener('DOMContentLoaded', function () {
             if (current > 0) {
                 current--;
                 showBlock(current);
+                showEndModalIfNeeded(current);
             }
         });
-        // Next (right) goes to next
         nextBtn.addEventListener('click', () => {
             if (current < aboutBlocks.length - 1) {
                 current++;
                 showBlock(current);
+                showEndModalIfNeeded(current);
             }
         });
         showBlock(current);
+
+        function showEndModalIfNeeded(idx) {
+            if (idx !== aboutBlocks.length - 1) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay';
+
+            const box = document.createElement('div');
+            box.className = 'modal-box';
+
+            const msg = document.createElement('div');
+            msg.className = 'modal-message';
+            msg.textContent = "thanks for reading to the end! here's a coin for your efforts :D feel free to explore the rest of the site for anything you need! i recommend the projects and art gallery, spent a lot of time on that<3";
+
+            const coinImg = document.createElement('img');
+            coinImg.className = 'modal-coin';
+            coinImg.src = 'images/coin.png';
+            coinImg.alt = 'coin';
+
+            const okBtn = document.createElement('button');
+            okBtn.className = 'modal-ok-btn';
+            const okImg = document.createElement('img');
+            okImg.src = 'images/okay.png';
+            okImg.alt = 'okay';
+            okBtn.appendChild(okImg);
+            const okText = document.createElement('span');
+            okText.textContent = 'okay!';
+            okBtn.appendChild(okText);
+
+            box.appendChild(msg);
+            box.appendChild(coinImg);
+            box.appendChild(okBtn);
+            overlay.appendChild(box);
+
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+
+            okBtn.addEventListener('click', () => {
+                overlay.remove();
+                document.body.style.overflow = '';
+            });
+        }
+
+        showEndModalIfNeeded(current);
     }
     
-    // Header scroll-list reveal: hide initially, reveal when each enters viewport
     const headerList = document.querySelectorAll('.header-scroll-list .extra-scroll-text');
     headerList.forEach(el => {
         el.style.display = 'none';
@@ -207,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const el = document.getElementById('time-greeting');
         if (!el) return;
         const now = new Date();
-        const weekday = now.toLocaleDateString(undefined, { weekday: 'long' });
+    const weekday = now.toLocaleDateString(undefined, { weekday: 'long' }).toLowerCase();
         const hour = now.getHours();
         const tod = getTimeOfDay(hour);
 

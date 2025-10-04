@@ -15,16 +15,18 @@
     cursor: not-allowed;
 }
 .carousel-btn-img {
-    width: 36px;
-    height: 24px;
+    width: 108px;
+    height: 72px;
     display: block;
     filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
-    transition: filter 0.15s, brightness 0.15s;
+    transition: filter 0.15s, brightness 0.15s, transform 0.12s;
     object-fit: contain;
 }
 .carousel-img-btn:hover .carousel-btn-img {
     filter: brightness(1.2) drop-shadow(0 2px 10px rgba(0,0,0,0.18));
+    transform: scale(1.04);
 }
+
 .centered-scroll-text,
 .extra-scroll-text {
     color: #fff !important;
@@ -131,12 +133,16 @@ body::before {
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.05rem;
+    padding: 0.45rem 0.6rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.18s, color 0.18s, transform 0.12s;
     outline: none;
+    display: block;
+    width: 140px; /* slightly narrower */
+    margin: 0.15rem auto;
+    text-align: center;
 }
 
 .nav-btn.active,
@@ -161,6 +167,14 @@ body::before {
     to { opacity: 1; transform: translateY(0);}
 }
 
+.about-icon {
+    display: flex;
+    max-width: 420px;
+    max-height: 250px;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
 .about-center-img {
     display: flex;
     max-width: 420px;
@@ -183,10 +197,13 @@ body::before {
 }
 
 .time-greeting {
-    text-align: left;
+    margin-top: 0.6rem;
+    text-align: center;
     font-size: 1rem;
     color: #2b8c6f;
     background: rgba(255,255,255,0.92);
+    padding: 0.45rem 0.8rem;
+    border-radius: 8px;
 }
 
 .time-greeting.small {
@@ -365,14 +382,6 @@ footer {
     padding-top: 1.5rem;
 }
 
-/* .about-flex {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-} */
-
-
-
 .typed-text {
     color: #dbfcdd;
     font-weight: bold;
@@ -401,4 +410,58 @@ footer.anim-in {
 .content-section.anim-out,
 footer.anim-out {
     animation: slideDownOut 0.5s forwards;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+.modal-box {
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    max-width: 520px;
+    width: calc(100% - 3rem);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.28);
+    text-align: center;
+}
+.modal-message {
+    color: #0b7a3a; /* green text */
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+}
+.modal-coin {
+    max-width: 140px;
+    width: 40%;
+    height: auto;
+    margin: 0.5rem auto 0.9rem auto;
+}
+.modal-ok-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100px;
+    padding: 0.45rem 0.7rem;
+    background: #2b8c6f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: filter 0.12s, background 0.12s, transform 0.08s;
+}
+.modal-ok-btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+.modal-ok-btn img {
+    max-height: 20px;
+    width: auto;
 }
