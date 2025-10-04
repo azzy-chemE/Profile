@@ -53,6 +53,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const next = document.getElementById(targetId);
         const current = document.querySelector('.content-section.active');
 
+        // Hide/show about carousel and front page text
+        const aboutCarousel = document.querySelector('.about-blocks-carousel');
+        const aboutNav = document.querySelector('.about-carousel-nav');
+        const frontPageTexts = document.querySelectorAll('.centered-scroll-text, .extra-scroll-text');
+        if (targetId === 'about') {
+            if (aboutCarousel) aboutCarousel.style.display = '';
+            if (aboutNav) aboutNav.style.display = '';
+            frontPageTexts.forEach(el => el.style.display = '');
+        } else {
+            if (aboutCarousel) aboutCarousel.style.display = 'none';
+            if (aboutNav) aboutNav.style.display = 'none';
+            frontPageTexts.forEach(el => el.style.display = 'none');
+        }
+
         sections.forEach(sec => {
             if (sec !== current && sec !== next) {
                 sec.classList.remove('active', 'anim-in', 'anim-out');
