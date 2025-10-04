@@ -63,7 +63,6 @@
     transition: opacity 1.2s ease;
 }
 
-
 .header-scroll-list {
     max-width: 800px;
     margin: 1.2rem auto 0 auto;
@@ -182,14 +181,10 @@ body::before {
 }
 
 .time-greeting {
-    margin-top: 0.9rem;
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     color: #2b8c6f;
     background: rgba(255,255,255,0.92);
-    padding: 0.6rem 0.9rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .time-greeting.small {
