@@ -103,6 +103,36 @@ document.addEventListener('DOMContentLoaded', function () {
             aboutSection.classList.remove('anim-in');
         }, 500);
         }
+        
+    const aboutBlocksContainer = document.querySelector('.about-blocks-carousel');
+    if (aboutBlocksContainer) {
+        const aboutBlocks = aboutBlocksContainer.querySelectorAll('.about-block');
+        const prevBtn = document.getElementById('about-prev');
+        const nextBtn = document.getElementById('about-next');
+        let current = 0;
+
+        function showBlock(idx) {
+            aboutBlocks.forEach((block, i) => {
+                block.style.display = (i === idx) ? 'block' : 'none';
+            });
+            prevBtn.disabled = idx === 0;
+            nextBtn.disabled = idx === aboutBlocks.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (current > 0) {
+                current--;
+                showBlock(current);
+            }
+        });
+        nextBtn.addEventListener('click', () => {
+            if (current < aboutBlocks.length - 1) {
+                current++;
+                showBlock(current);
+            }
+        });
+        showBlock(current);
+    }
     
     const scrollText = document.querySelector('.centered-scroll-text');
     function revealScrollText() {

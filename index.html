@@ -50,43 +50,32 @@
     
         <div class="content">
             <section id="about" class="content-section active">
-                <div class="about-block">
-                <h2>a little bit about me</h2>
-
-                <!-- profile image !-->
-                <div class="transparent-img-block">
-                <img src="icon.png" alt="Centered" class="center-img">
-                </div>
-
-                <!-- about text 1 -->
-                <!-- note to self: Just duplicate these blocks to add more cards in the future.-->
-                
-                <div class="about-flex">
-                    <p>hello! I'm azzy! I do a lot of things, but it all started with six pet birds... here's a picture of some of them!</p>
-                    <img src="birds.png" alt="Centered" class="center-img">
-                    
-                </div>
-                </div>
-    
-                <!-- about text 2 -->
-            
-                <div class="about-block">
-                    <h2> Fun Facts </h2>
-                    <!-- <div class="about-flex"> -->
-                    <p> I'll add stuff here later, but for now, just know that I love birds :)</p>
-                    <!-- </div> -->
-            
-                </div>
-                
-                <div class="about-block">
-                <h2> Favorite Obsessions </h2>
-                    <!-- <div class="about-flex"> -->
-                <p> I'll add stuff here later as well...</p>
-                    <!-- </div> -->
-                </div>
-
-                <div class="transparent-img-block">
-                    <img src="centered-image.png" alt="Centered" class="center-img">
+                <div class="about-blocks-carousel">
+                    <div class="about-block" style="display:block;">
+                        <h2>a little bit about me</h2>
+                        <div class="transparent-img-block">
+                            <img src="icon.png" alt="Centered" class="center-img">
+                        </div>
+                        <div class="about-flex">
+                            <p>hello! I'm azzy! I do a lot of things, but it all started with six pet birds... here's a picture of some of them!</p>
+                            <img src="birds.png" alt="Centered" class="center-img">
+                        </div>
+                    </div>
+                    <div class="about-block" style="display:none;">
+                        <h2> Fun Facts </h2>
+                        <p> I'll add stuff here later, but for now, just know that I love birds :)</p>
+                    </div>
+                    <div class="about-block" style="display:none;">
+                        <h2> Favorite Obsessions </h2>
+                        <p> I'll add stuff here later as well...</p>
+                    </div>
+                    <div class="transparent-img-block">
+                        <img src="centered-image.png" alt="Centered" class="center-img">
+                    </div>
+                    <div class="about-carousel-nav" style="text-align:center; margin-top:1em;">
+                        <button id="about-prev" style="display:inline-block;">&larr; Back</button>
+                        <button id="about-next" style="display:inline-block;">Next &rarr;</button>
+                    </div>
                 </div>
             </section>
 
