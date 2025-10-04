@@ -186,6 +186,22 @@ body::before {
     border-radius: 10px;
 }
 
+.time-greeting {
+    margin-top: 0.9rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #2b8c6f;
+    background: rgba(255,255,255,0.92);
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.time-greeting.small {
+    font-size: 0.95rem;
+    padding: 0.45rem 0.7rem;
+}
+
 .center-img {
     width: 400px;
     height: 400px;

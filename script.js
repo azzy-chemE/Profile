@@ -195,4 +195,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     window.addEventListener('scroll', revealOnScrollBlocks);
     revealOnScrollBlocks();
+
+    function getTimeOfDay(hour) {
+        if (hour >= 5 && hour < 12) return 'morning';
+        if (hour >= 12 && hour < 17) return 'afternoon';
+        if (hour >= 17 && hour < 21) return 'evening';
+        return 'night';
+    }
+
+    function updateTimeGreeting() {
+        const el = document.getElementById('time-greeting');
+        if (!el) return;
+        const now = new Date();
+        const weekday = now.toLocaleDateString(undefined, { weekday: 'long' });
+        const hour = now.getHours();
+        const tod = getTimeOfDay(hour);
+
+        el.textContent = `hey, hope you're having a good ${weekday} ${tod}!`;
+        if (window.innerWidth < 420) el.classList.add('small'); else el.classList.remove('small');
+    }
+
+    updateTimeGreeting();
+    const now = new Date();
+    const msUntilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+    setTimeout(() => {
+        updateTimeGreeting();
+        setInterval(updateTimeGreeting, 60 * 1000);
+    }, msUntilNextMinute);
 });
