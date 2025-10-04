@@ -1,4 +1,16 @@
-/* Scroll-reveal for all main blocks */
+
+#coin-cursor {
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.1s;
+}
+
 .scroll-reveal-hidden {
     opacity: 0;
     transform: translateY(40px);

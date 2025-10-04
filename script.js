@@ -96,6 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    const coin = document.getElementById('coin-cursor');
+    if (coin) {
+        coin.style.display = 'block';
+        document.addEventListener('mousemove', function(e) {
+            coin.style.left = e.clientX + 'px';
+            coin.style.top = e.clientY + 'px';
+        });
+    }
+    
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
         aboutSection.classList.add('anim-in');
@@ -103,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
             aboutSection.classList.remove('anim-in');
         }, 500);
         }
-        
+
     const aboutBlocksContainer = document.querySelector('.about-blocks-carousel');
     if (aboutBlocksContainer) {
         const aboutBlocks = aboutBlocksContainer.querySelectorAll('.about-block');
@@ -148,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', revealScrollText);
     revealScrollText();
 
-    // Scroll-reveal for all main blocks
     function revealOnScrollBlocks() {
         document.querySelectorAll('.scroll-reveal-hidden').forEach(block => {
             if (block.classList.contains('scroll-reveal-visible')) return;
@@ -161,6 +170,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     window.addEventListener('scroll', revealOnScrollBlocks);
-    // In case already in view on load
     revealOnScrollBlocks();
 });
