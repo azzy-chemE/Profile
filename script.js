@@ -147,7 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (current > 0) {
                 current--;
                 showBlock(current);
-                showEndModalIfNeeded(current);
+                    window.showEndModal = function() { showEndModalIfNeeded(aboutBlocks.length - 1); };
+                    showEndModalIfNeeded(current);
             }
         });
         nextBtn.addEventListener('click', () => {
@@ -160,7 +161,12 @@ document.addEventListener('DOMContentLoaded', function () {
         showBlock(current);
 
         function showEndModalIfNeeded(idx) {
+            console.log('showEndModalIfNeeded called', idx, aboutBlocks.length);
             if (idx !== aboutBlocks.length - 1) return;
+            if (document.querySelector('.modal-overlay')) {
+                console.log('modal already open; skipping creation');
+                return;
+            }
             const overlay = document.createElement('div');
             overlay.className = 'modal-overlay';
 
@@ -176,28 +182,33 @@ document.addEventListener('DOMContentLoaded', function () {
             coinImg.src = 'images/coin.png';
             coinImg.alt = 'coin';
 
-            const okBtn = document.createElement('button');
-            okBtn.className = 'modal-ok-btn';
             const okImg = document.createElement('img');
+            okImg.className = 'modal-ok-img';
             okImg.src = 'images/okay.png';
             okImg.alt = 'okay';
-            okBtn.appendChild(okImg);
-            const okText = document.createElement('span');
-            okText.textContent = 'okay!';
-            okBtn.appendChild(okText);
+            okImg.setAttribute('role', 'button');
+            okImg.tabIndex = 0; // make focusable
 
             box.appendChild(msg);
             box.appendChild(coinImg);
-            box.appendChild(okBtn);
+            box.appendChild(okImg);
             overlay.appendChild(box);
 
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
 
-            okBtn.addEventListener('click', () => {
+            // close handlers for image-only OK control
+            okImg.addEventListener('click', () => {
                 overlay.remove();
                 document.body.style.overflow = '';
             });
+            okImg.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    okImg.click();
+                }
+            });
+            setTimeout(() => { try { okImg.focus(); } catch (e) {} }, 40);
         }
 
         showEndModalIfNeeded(current);

@@ -429,6 +429,10 @@ footer.anim-out {
     width: calc(100% - 3rem);
     box-shadow: 0 8px 30px rgba(0,0,0,0.28);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
 }
 .modal-message {
     color: #0b7a3a; /* green text */
@@ -442,26 +446,15 @@ footer.anim-out {
     height: auto;
     margin: 0.5rem auto 0.9rem auto;
 }
-.modal-ok-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+.modal-ok-img {
     width: 100px;
-    padding: 0.45rem 0.7rem;
-    background: #2b8c6f;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
+    height: auto;
+    display: block;
     cursor: pointer;
-    font-weight: 600;
-    transition: filter 0.12s, background 0.12s, transform 0.08s;
+    border-radius: 8px;
+    transition: filter 0.12s, transform 0.08s;
 }
-.modal-ok-btn:hover {
+.modal-ok-img:hover {
     filter: brightness(1.12);
     transform: translateY(-1px);
-}
-.modal-ok-btn img {
-    max-height: 20px;
-    width: auto;
 }
