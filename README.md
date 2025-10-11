@@ -59,3 +59,5 @@ UP NEXT:
 NOTE TO SELF:
 
 - need 280 coins for time turners to make up for previous 7 hours lost in week 5
+
+- if I stopped now: would need 270 coins for mercenaries to make up for 9 hours - which would mean 540 reviews (impossible)
