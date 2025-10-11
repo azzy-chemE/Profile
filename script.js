@@ -139,27 +139,30 @@ document.addEventListener('DOMContentLoaded', function () {
     coinCounter.style.borderRadius = '6px';
     coinCounter.style.fontSize = '0.95rem';
     coinCounter.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
-    let coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
-    let factCoins = parseInt(localStorage.getItem('factCoins') || '0', 10) || 0;
+    let coins = 0;
+    let factCoins = 0;
+    let endModalAwarded = false;
+
     function renderCoins() {
         coinCounter.textContent = `Your coins: ${coins}`;
     }
+
     function addCoins(n) {
         if (!coins) coins = 0;
-        coins = coins + n;
-        localStorage.setItem('coins', String(coins));
+        coins += n;
         renderCoins();
     }
+
     function addFactCoins(n) {
         const maxFactCoins = 10;
         if (!factCoins) factCoins = 0;
         const canAdd = Math.max(0, Math.min(n, maxFactCoins - factCoins));
-        if (canAdd <= 0) return false; // cap reached
+        if (canAdd <= 0) return false;
         factCoins += canAdd;
-        localStorage.setItem('factCoins', String(factCoins));
         addCoins(canAdd);
         return true;
     }
+
     renderCoins();
     document.body.appendChild(coinCounter);
 
@@ -346,41 +349,41 @@ document.addEventListener('DOMContentLoaded', function () {
             const overlayEmpty = document.createElement('div');
             overlayEmpty.className = 'modal-overlay';
             overlayEmpty.style.zIndex = '2000';
-            const boxEmpty = document.createElement('div');
-            boxEmpty.className = 'modal-box';
-            const msgEmpty = document.createElement('div');
-            msgEmpty.className = 'modal-message';
-            msgEmpty.textContent = "Sorry, I'm out of facts! Maybe check back later and I will add more soon!";
-            const okEmpty = document.createElement('img');
-            okEmpty.className = 'modal-ok-img';
-            okEmpty.src = 'images/okay.png';
-            okEmpty.alt = 'okay';
-            okEmpty.tabIndex = 0;
-            boxEmpty.appendChild(msgEmpty);
-            boxEmpty.appendChild(okEmpty);
-            overlayEmpty.appendChild(boxEmpty);
-            document.body.appendChild(overlayEmpty);
-            document.body.style.overflow = 'hidden';
-            okEmpty.addEventListener('click', () => { overlayEmpty.remove(); document.body.style.overflow = ''; });
-            okEmpty.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); okEmpty.click(); } });
-            setTimeout(() => { try { okEmpty.focus(); } catch (e) {} }, 40);
-            return;
-        }
-        const idx = Math.floor(Math.random() * unseenFacts.length);
-        const fact = unseenFacts.splice(idx, 1)[0];
-    const overlay = document.createElement('div');
-    overlay.className = 'modal-overlay';
-    overlay.style.zIndex = '2000';
-        const box = document.createElement('div');
-        box.className = 'modal-box';
+                coinCounter.style.top = '12px';
+                coinCounter.style.right = '12px';
+                coinCounter.style.zIndex = '1000';
+                coinCounter.style.backgroundColor = 'rgba(0,0,0,0.65)';
+                coinCounter.style.color = '#fff';
+                coinCounter.style.padding = '0.25rem 0.5rem';
+                coinCounter.style.borderRadius = '6px';
+                coinCounter.style.fontSize = '0.95rem';
+                coinCounter.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
+                let coins = 0;
+                let factCoins = 0;
+                let endModalAwarded = false;
 
+                function renderCoins() {
+                    coinCounter.textContent = `Your coins: ${coins}`;
+                }
 
-    const container = document.createElement('div');
-    container.className = 'pagedoll-modal-content';
+                function addCoins(n) {
+                    if (!coins) coins = 0;
+                    coins = coins + n;
+                    renderCoins();
+                }
 
-    const popupImg = document.createElement('img');
-    popupImg.className = 'pagedoll-popup-img';
-    popupImg.src = 'images/bird_pagedoll_popup.png';
+                function addFactCoins(n) {
+                    const maxFactCoins = 10;
+                    if (!factCoins) factCoins = 0;
+                    const canAdd = Math.max(0, Math.min(n, maxFactCoins - factCoins));
+                    if (canAdd <= 0) return false;
+                    factCoins += canAdd;
+                    addCoins(canAdd);
+                    return true;
+                }
+
+                renderCoins();
+                document.body.appendChild(coinCounter);
     popupImg.alt = 'pagedoll';
 
     const right = document.createElement('div');
