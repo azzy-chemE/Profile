@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const overlay = document.createElement('div');
             overlay.className = 'modal-overlay';
+            overlay.style.zIndex = '2000';
 
             const box = document.createElement('div');
             box.className = 'modal-box';
@@ -196,6 +197,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
+            try {
+                const prev = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
+                const nowCount = prev + 1;
+                localStorage.setItem('coins', String(nowCount));
+                const visibleCounter = document.querySelector('.coin-counter');
+                if (visibleCounter) visibleCounter.textContent = `Your coins: ${nowCount}`;
+            } catch (e) {
+                console.warn('could not award coin to localStorage', e);
+            }
             okImg.addEventListener('click', () => {
                 overlay.remove();
                 document.body.style.overflow = '';
@@ -281,10 +291,23 @@ document.addEventListener('DOMContentLoaded', function () {
     pagedollImg.className = 'pagedoll';
     pagedollImg.tabIndex = 0;
     pagedollImg.setAttribute('role', 'button');
+    pagedollImg.style.width = '250px';
+    pagedollImg.style.height = 'auto';
+    pagedollImg.style.cursor = 'pointer';
     document.body.appendChild(pagedollImg);
 
     const coinCounter = document.createElement('div');
     coinCounter.className = 'coin-counter';
+    coinCounter.style.position = 'fixed';
+    coinCounter.style.top = '12px';
+    coinCounter.style.right = '12px';
+    coinCounter.style.zIndex = '1000';
+    coinCounter.style.backgroundColor = 'rgba(0,0,0,0.65)';
+    coinCounter.style.color = '#fff';
+    coinCounter.style.padding = '0.25rem 0.5rem';
+    coinCounter.style.borderRadius = '6px';
+    coinCounter.style.fontSize = '0.95rem';
+    coinCounter.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
     let coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
     function renderCoins() {
         coinCounter.textContent = `Your coins: ${coins}`;
@@ -314,8 +337,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function showFactModal() {
         if (document.querySelector('.modal-overlay')) return;
         const idx = Math.floor(Math.random() * facts.length);
-        const overlay = document.createElement('div');
-        overlay.className = 'modal-overlay';
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.style.zIndex = '2000';
         const box = document.createElement('div');
         box.className = 'modal-box';
 
@@ -330,7 +354,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const right = document.createElement('div');
     right.style.flex = '1';
-
+    right.style.display = 'flex';
+    right.style.flexDirection = 'column';
+    right.style.alignItems = 'center';
+    right.style.justifyContent = 'center';
+    right.style.textAlign = 'center';
     const msg = document.createElement('div');
     msg.className = 'modal-message';
     msg.textContent = facts[idx];
@@ -340,6 +368,9 @@ document.addEventListener('DOMContentLoaded', function () {
     okImg.src = 'images/okay.png';
     okImg.alt = 'okay';
     okImg.tabIndex = 0;
+
+    okImg.style.display = 'block';
+    okImg.style.margin = '0.6rem auto 0';
 
     const hint = document.createElement('div');
     hint.style.fontSize = '0.95rem';
@@ -356,7 +387,6 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.appendChild(box);
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
-    // award a coin for generating a fact
     addCoins(1);
 
         okImg.addEventListener('click', () => {

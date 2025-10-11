@@ -37,13 +37,12 @@
     width: 48px;
     height: 48px;
     pointer-events: none;
-    z-index: 100001; 
+    z-index: 100001;
     left: 0;
     top: 0;
     transform: translate(-50%, -50%);
     transition: opacity 0.1s;
 }
-
 .scroll-reveal-hidden {
     opacity: 0;
     transform: translateY(40px);
@@ -71,7 +70,7 @@
     padding: 0 1rem;
 }
 .extra-scroll-text {
-    margin: 3.5rem 0 0 0; /* spaced so user scrolls */
+    margin: 3.5rem 0 0 0;
 }
 
 body, h1, h2, h3, p, button, nav, aside, main, footer {
@@ -140,7 +139,7 @@ body::before {
     transition: background 0.18s, color 0.18s, transform 0.12s;
     outline: none;
     display: block;
-    width: 140px; /* slightly narrower */
+    width: 140px;
     margin: 0.15rem auto;
     text-align: center;
 }
@@ -161,9 +160,9 @@ body::before {
     position: fixed;
     right: 18px;
     bottom: 18px;
-    width: 240px; /* ~2.5x larger */
+    width: 250px;
     height: auto;
-    z-index: 99998; /* below modal overlay */
+    z-index: 99998;
     cursor: pointer;
     transition: filter 0.12s, transform 0.12s;
     border-radius: 0;
@@ -177,13 +176,12 @@ body::before {
     outline: none;
 }
 
-/* coin counter (top-right) */
 .coin-counter {
     position: fixed;
     top: 12px;
     right: 12px;
-    z-index: 100000;
-    background: rgba(255,255,255,0.9);
+    z-index: 1000;
+    background: rgba(0,0,0,0.65);
     color: #0b7a3a;
     padding: 0.35rem 0.6rem;
     border-radius: 8px;
@@ -226,10 +224,6 @@ body::before {
     font-size: 0.95rem;
     padding: 0.45rem 0.7rem;
 }
-
-
-
-
 
 .content {
     max-width: 900px;
@@ -451,7 +445,7 @@ footer.anim-out {
     gap: 0.6rem;
 }
 .modal-message {
-    color: #0b7a3a; /* green text */
+    color: #0b7a3a;
     font-weight: 600;
     margin-bottom: 0.9rem;
     line-height: 1.4;
@@ -470,29 +464,12 @@ footer.anim-out {
     border-radius: 8px;
     transition: filter 0.12s, transform 0.08s;
 }
+.modal-box .modal-ok-img { margin: 0.4rem auto 0; }
 .modal-ok-img:hover {
     filter: brightness(1.12);
     transform: translateY(-1px);
 }
 
-.pagedoll {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    width: 96px;
-    height: auto;
-    z-index: 99998;
-    cursor: pointer;
-    transition: filter 0.12s, transform 0.12s;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-}
-.pagedoll:hover,
-.pagedoll:focus {
-    filter: brightness(1.12);
-    transform: translateY(-3px);
-    outline: none;
-}
 
 .pagedoll-modal-content {
     display: flex;
