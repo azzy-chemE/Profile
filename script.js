@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const overlay = document.createElement('div');
             overlay.className = 'modal-overlay';
-            overlay.style.zIndex = '2000';
 
             const box = document.createElement('div');
             box.className = 'modal-box';
@@ -227,10 +226,21 @@ document.addEventListener('DOMContentLoaded', function () {
     pagedollImg.className = 'pagedoll';
     pagedollImg.tabIndex = 0;
     pagedollImg.setAttribute('role', 'button');
-    pagedollImg.style.width = '250px';
-    pagedollImg.style.height = 'auto';
-    pagedollImg.style.cursor = 'pointer';
     document.body.appendChild(pagedollImg);
+
+    const coinCounter = document.createElement('div');
+    coinCounter.className = 'coin-counter';
+    let coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
+    function renderCoins() {
+        coinCounter.textContent = `Your coins: ${coins}`;
+    }
+    function addCoins(n) {
+        coins = (coins || 0) + n;
+        localStorage.setItem('coins', String(coins));
+        renderCoins();
+    }
+    renderCoins();
+    document.body.appendChild(coinCounter);
 
     const facts = [
         // placeholders, I will edit these to be good later :3
@@ -291,11 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const right = document.createElement('div');
     right.style.flex = '1';
-    right.style.display = 'flex';
-    right.style.flexDirection = 'column';
-    right.style.alignItems = 'center';
-    right.style.justifyContent = 'center';
-    right.style.textAlign = 'center';
+
     const msg = document.createElement('div');
     msg.className = 'modal-message';
     msg.textContent = fact;
@@ -305,9 +311,6 @@ document.addEventListener('DOMContentLoaded', function () {
     okImg.src = 'images/okay.png';
     okImg.alt = 'okay';
     okImg.tabIndex = 0;
-
-    okImg.style.display = 'block';
-    okImg.style.margin = '0.6rem auto 0';
 
     const hint = document.createElement('div');
     hint.style.fontSize = '0.95rem';
