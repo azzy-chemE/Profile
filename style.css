@@ -459,3 +459,10 @@ footer.anim-out {
     filter: brightness(1.12);
     transform: translateY(-1px);
 }
+
+/* Log of features to add in first two hours:
+- Add pagedoll in the corner that gives a random fact in a speech bubble, import new Google font
+- align "hey, hope you're having a good saturday morning!" text
+- add cool hover effect on links 
+- add magic mouse trail to coin cursor
+- fix images alignment */ 
