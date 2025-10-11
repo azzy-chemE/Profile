@@ -55,7 +55,3 @@ UP NEXT:
 - fix images alignment
 
 - add magic pop-up upon site load
-
-NOTE TO SELF:
-
-- need 280 coins for time turners to make up for previous 7 hours lost in week 5
