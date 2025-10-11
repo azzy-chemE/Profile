@@ -33,3 +33,25 @@ On the "Resume" tab, click on the hyperlink to open my resume in a new tab and d
 **Site background image:** Created by Alex Kunchevsky (https://dribbble.com/shots/4689038-Chemistry/)
 
 **Font:** Bitter by Google Fonts (https://fonts.google.com/specimen/Bitter?query=bitter)
+
+## Working Tree
+
+A log of what I'm currently working on that I update with each commit!
+
+CURRENTLY WORKING ON:
+
+- Add pagedoll in the corner that gives a random fact in a speech bubble
+
+UP NEXT: 
+
+- align "hey, hope you're having a good saturday morning!" text
+
+- add subheadings to HTML text
+
+- add cool hover effect on links 
+
+- add magic mouse trail to coin cursor
+
+- fix images alignment
+
+- add magic pop-up upon site load
