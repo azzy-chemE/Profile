@@ -283,6 +283,20 @@ document.addEventListener('DOMContentLoaded', function () {
     pagedollImg.setAttribute('role', 'button');
     document.body.appendChild(pagedollImg);
 
+    const coinCounter = document.createElement('div');
+    coinCounter.className = 'coin-counter';
+    let coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
+    function renderCoins() {
+        coinCounter.textContent = `Your coins: ${coins}`;
+    }
+    function addCoins(n) {
+        coins = (coins || 0) + n;
+        localStorage.setItem('coins', String(coins));
+        renderCoins();
+    }
+    renderCoins();
+    document.body.appendChild(coinCounter);
+
     const facts = [
         // placeholders, I will edit these to be good later :3
         'Chemistry fact: Water can dissolve more substances than any other liquid.',
@@ -291,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'Bird fact: Many bird species can see ultraviolet light, which helps them find food and mates.',
         'Chemistry fact: Carbon forms more compounds than any other element.',
         'ChemE fact: Reaction engineering balances kinetics and transport to optimize production.',
-        'CS fact: A recently released model of Claude AI has been shown to blackmail people for its own interests.',
+        'CS fact: Machine learning models require careful evaluation and safety testing to avoid harmful behaviour.',
         'Bird fact: Some birds, like the Arctic tern, migrate thousands of miles every year.',
         'Chemistry fact: Catalysts speed up reactions without being consumed.',
         'CS fact: Open-source software accelerated global collaboration in computing.'
@@ -305,33 +319,45 @@ document.addEventListener('DOMContentLoaded', function () {
         const box = document.createElement('div');
         box.className = 'modal-box';
 
-        const msg = document.createElement('div');
-        msg.className = 'modal-message';
-        msg.textContent = facts[idx];
 
-        const coinImg = document.createElement('img');
-        coinImg.className = 'modal-coin';
-        coinImg.src = 'images/coin.png';
-        coinImg.alt = 'coin';
+    const container = document.createElement('div');
+    container.className = 'pagedoll-modal-content';
 
-        const okImg = document.createElement('img');
-        okImg.className = 'modal-ok-img';
-        okImg.src = 'images/okay.png';
-        okImg.alt = 'okay';
-        okImg.tabIndex = 0;
+    const popupImg = document.createElement('img');
+    popupImg.className = 'pagedoll-popup-img';
+    popupImg.src = 'images/bird_pagedoll_popup.png';
+    popupImg.alt = 'pagedoll';
 
-        const hint = document.createElement('div');
-        hint.style.fontSize = '0.95rem';
-        hint.style.marginTop = '0.4rem';
-        hint.textContent = 'Click the image below (okay) to close. Click the bird again for another fact.';
+    const right = document.createElement('div');
+    right.style.flex = '1';
 
-        box.appendChild(msg);
-        box.appendChild(coinImg);
-        box.appendChild(okImg);
-        box.appendChild(hint);
+    const msg = document.createElement('div');
+    msg.className = 'modal-message';
+    msg.textContent = facts[idx];
+
+    const okImg = document.createElement('img');
+    okImg.className = 'modal-ok-img';
+    okImg.src = 'images/okay.png';
+    okImg.alt = 'okay';
+    okImg.tabIndex = 0;
+
+    const hint = document.createElement('div');
+    hint.style.fontSize = '0.95rem';
+    hint.style.marginTop = '0.4rem';
+    hint.textContent = 'Click the image below (okay) to close. Click the bird again for another fact.';
+
+    right.appendChild(msg);
+    right.appendChild(okImg);
+    right.appendChild(hint);
+
+    container.appendChild(popupImg);
+    container.appendChild(right);
+    box.appendChild(container);
         overlay.appendChild(box);
-        document.body.appendChild(overlay);
-        document.body.style.overflow = 'hidden';
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    // award a coin for generating a fact
+    addCoins(1);
 
         okImg.addEventListener('click', () => {
             overlay.remove();

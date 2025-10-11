@@ -1,3 +1,10 @@
+/* Log of features to add in first two hours:
+CURRENTLY WORKING ON: - Add pagedoll in the corner that gives a random fact in a speech bubble
+- align "hey, hope you're having a good saturday morning!" text
+- add cool hover effect on links 
+- add magic mouse trail to coin cursor
+- fix images alignment */
+
 .carousel-img-btn {
     background: none;
     border: none;
@@ -37,7 +44,7 @@
     width: 48px;
     height: 48px;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 100001; 
     left: 0;
     top: 0;
     transform: translate(-50%, -50%);
@@ -157,24 +164,39 @@ body::before {
     transition: margin-left 0.3s;
 }
 
-.hero {
-    margin-bottom: 2rem;
-    animation: fadeInDown 1s;
+.pagedoll {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 240px; /* ~2.5x larger */
+    height: auto;
+    z-index: 99998; /* below modal overlay */
+    cursor: pointer;
+    transition: filter 0.12s, transform 0.12s;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+.pagedoll:hover,
+.pagedoll:focus {
+    filter: brightness(1.12);
+    transform: translateY(-3px);
+    outline: none;
 }
 
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px);}
-    to { opacity: 1; transform: translateY(0);}
+/* coin counter (top-right) */
+.coin-counter {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 100000;
+    background: rgba(255,255,255,0.9);
+    color: #0b7a3a;
+    padding: 0.35rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-
-.about-icon {
-    display: flex;
-    max-width: 420px;
-    max-height: 250px;
-    justify-content: center;
-    margin: 1rem 0;
-}
-
 .about-center-img {
     display: flex;
     max-width: 420px;
@@ -460,13 +482,6 @@ footer.anim-out {
     transform: translateY(-1px);
 }
 
-/* Log of features to add in first two hours:
-CURRENTLY WORKING ON: - Add pagedoll in the corner that gives a random fact in a speech bubble, import new Google font
-- align "hey, hope you're having a good saturday morning!" text
-- add cool hover effect on links 
-- add magic mouse trail to coin cursor
-- fix images alignment */
-
 .pagedoll {
     position: fixed;
     right: 18px;
@@ -484,4 +499,27 @@ CURRENTLY WORKING ON: - Add pagedoll in the corner that gives a random fact in a
     filter: brightness(1.12);
     transform: translateY(-3px);
     outline: none;
+}
+
+.pagedoll-modal-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.pagedoll-popup-img {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 0.6rem;
+    border-radius: 8px;
+}
+@media (max-width: 520px) {
+    .pagedoll-modal-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pagedoll-popup-img {
+        width: 48%;
+        margin: 0 0 0.5rem 0;
+    }
 }
