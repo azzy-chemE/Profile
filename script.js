@@ -127,6 +127,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
         }
 
+    const coinCounter = document.createElement('div');
+    coinCounter.className = 'coin-counter';
+    coinCounter.style.position = 'fixed';
+    coinCounter.style.top = '12px';
+    coinCounter.style.right = '12px';
+    coinCounter.style.zIndex = '1000';
+    coinCounter.style.backgroundColor = 'rgba(0,0,0,0.65)';
+    coinCounter.style.color = '#fff';
+    coinCounter.style.padding = '0.25rem 0.5rem';
+    coinCounter.style.borderRadius = '6px';
+    coinCounter.style.fontSize = '0.95rem';
+    coinCounter.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
+    let coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
+    let factCoins = parseInt(localStorage.getItem('factCoins') || '0', 10) || 0;
+    function renderCoins() {
+        coinCounter.textContent = `Your coins: ${coins}`;
+    }
+    function addCoins(n) {
+        if (!coins) coins = 0;
+        coins = coins + n;
+        localStorage.setItem('coins', String(coins));
+        renderCoins();
+    }
+    function addFactCoins(n) {
+        const maxFactCoins = 10;
+        if (!factCoins) factCoins = 0;
+        const canAdd = Math.max(0, Math.min(n, maxFactCoins - factCoins));
+        if (canAdd <= 0) return false; // cap reached
+        factCoins += canAdd;
+        localStorage.setItem('factCoins', String(factCoins));
+        addCoins(canAdd);
+        return true;
+    }
+    renderCoins();
+    document.body.appendChild(coinCounter);
+
     const aboutBlocksContainer = document.querySelector('.about-blocks-carousel');
     if (aboutBlocksContainer) {
         const aboutBlocks = aboutBlocksContainer.querySelectorAll('.about-block');
@@ -197,15 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
-            try {
-                const prev = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
-                const nowCount = prev + 1;
-                localStorage.setItem('coins', String(nowCount));
-                const visibleCounter = document.querySelector('.coin-counter');
-                if (visibleCounter) visibleCounter.textContent = `Your coins: ${nowCount}`;
-            } catch (e) {
-                console.warn('could not award coin to localStorage', e);
-            }
+            try { addCoins(1); } catch (e) { console.warn('addCoins not available', e); }
             okImg.addEventListener('click', () => {
                 overlay.remove();
                 document.body.style.overflow = '';
@@ -296,30 +324,6 @@ document.addEventListener('DOMContentLoaded', function () {
     pagedollImg.style.cursor = 'pointer';
     document.body.appendChild(pagedollImg);
 
-    const coinCounter = document.createElement('div');
-    coinCounter.className = 'coin-counter';
-    coinCounter.style.position = 'fixed';
-    coinCounter.style.top = '12px';
-    coinCounter.style.right = '12px';
-    coinCounter.style.zIndex = '1000';
-    coinCounter.style.backgroundColor = 'rgba(0,0,0,0.65)';
-    coinCounter.style.color = '#fff';
-    coinCounter.style.padding = '0.25rem 0.5rem';
-    coinCounter.style.borderRadius = '6px';
-    coinCounter.style.fontSize = '0.95rem';
-    coinCounter.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
-    let coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
-    function renderCoins() {
-        coinCounter.textContent = `Your coins: ${coins}`;
-    }
-    function addCoins(n) {
-        coins = (coins || 0) + n;
-        localStorage.setItem('coins', String(coins));
-        renderCoins();
-    }
-    renderCoins();
-    document.body.appendChild(coinCounter);
-
     const facts = [
         // placeholders, I will edit these to be good later :3
         'Chemistry fact: Water can dissolve more substances than any other liquid.',
@@ -334,9 +338,36 @@ document.addEventListener('DOMContentLoaded', function () {
         'CS fact: Open-source software accelerated global collaboration in computing.'
     ];
 
+    let unseenFacts = facts.slice();
+
     function showFactModal() {
         if (document.querySelector('.modal-overlay')) return;
-        const idx = Math.floor(Math.random() * facts.length);
+        if (unseenFacts.length === 0) {
+            const overlayEmpty = document.createElement('div');
+            overlayEmpty.className = 'modal-overlay';
+            overlayEmpty.style.zIndex = '2000';
+            const boxEmpty = document.createElement('div');
+            boxEmpty.className = 'modal-box';
+            const msgEmpty = document.createElement('div');
+            msgEmpty.className = 'modal-message';
+            msgEmpty.textContent = "Sorry, I'm out of facts! Maybe check back later and I will add more soon!";
+            const okEmpty = document.createElement('img');
+            okEmpty.className = 'modal-ok-img';
+            okEmpty.src = 'images/okay.png';
+            okEmpty.alt = 'okay';
+            okEmpty.tabIndex = 0;
+            boxEmpty.appendChild(msgEmpty);
+            boxEmpty.appendChild(okEmpty);
+            overlayEmpty.appendChild(boxEmpty);
+            document.body.appendChild(overlayEmpty);
+            document.body.style.overflow = 'hidden';
+            okEmpty.addEventListener('click', () => { overlayEmpty.remove(); document.body.style.overflow = ''; });
+            okEmpty.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); okEmpty.click(); } });
+            setTimeout(() => { try { okEmpty.focus(); } catch (e) {} }, 40);
+            return;
+        }
+        const idx = Math.floor(Math.random() * unseenFacts.length);
+        const fact = unseenFacts.splice(idx, 1)[0];
     const overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
     overlay.style.zIndex = '2000';
@@ -361,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function () {
     right.style.textAlign = 'center';
     const msg = document.createElement('div');
     msg.className = 'modal-message';
-    msg.textContent = facts[idx];
+    msg.textContent = fact;
 
     const okImg = document.createElement('img');
     okImg.className = 'modal-ok-img';
@@ -387,7 +418,9 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.appendChild(box);
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
-    addCoins(1);
+    if (!addFactCoins(1)) {
+        console.log('fact coin cap reached; no coin awarded for this fact');
+    }
 
         okImg.addEventListener('click', () => {
             overlay.remove();

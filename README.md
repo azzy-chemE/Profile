@@ -42,7 +42,7 @@ CURRENTLY WORKING ON:
 
 - Add pagedoll in the corner that gives a random fact in a speech bubble
 
-UP NEXT: 
+UP NEXT:
 
 - align "hey, hope you're having a good saturday morning!" text
 
