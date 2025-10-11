@@ -461,8 +461,27 @@ footer.anim-out {
 }
 
 /* Log of features to add in first two hours:
-- Add pagedoll in the corner that gives a random fact in a speech bubble, import new Google font
+CURRENTLY WORKING ON: - Add pagedoll in the corner that gives a random fact in a speech bubble, import new Google font
 - align "hey, hope you're having a good saturday morning!" text
 - add cool hover effect on links 
 - add magic mouse trail to coin cursor
-- fix images alignment */ 
+- fix images alignment */
+
+.pagedoll {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 96px;
+    height: auto;
+    z-index: 99998;
+    cursor: pointer;
+    transition: filter 0.12s, transform 0.12s;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.pagedoll:hover,
+.pagedoll:focus {
+    filter: brightness(1.12);
+    transform: translateY(-3px);
+    outline: none;
+}

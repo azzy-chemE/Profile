@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
             okImg.src = 'images/okay.png';
             okImg.alt = 'okay';
             okImg.setAttribute('role', 'button');
-            okImg.tabIndex = 0; // make focusable
+            okImg.tabIndex = 0; 
 
             box.appendChild(msg);
             box.appendChild(coinImg);
@@ -196,8 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
-
-            // close handlers for image-only OK control
             okImg.addEventListener('click', () => {
                 overlay.remove();
                 document.body.style.overflow = '';
@@ -276,4 +274,75 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTimeGreeting();
         setInterval(updateTimeGreeting, 60 * 1000);
     }, msUntilNextMinute);
+
+    const pagedollImg = document.createElement('img');
+    pagedollImg.src = 'images/bird_pagedoll.png';
+    pagedollImg.alt = 'pagedoll';
+    pagedollImg.className = 'pagedoll';
+    pagedollImg.tabIndex = 0;
+    pagedollImg.setAttribute('role', 'button');
+    document.body.appendChild(pagedollImg);
+
+    const facts = [
+        // placeholders, I will edit these to be good later :3
+        'Chemistry fact: Water can dissolve more substances than any other liquid.',
+        'ChemE fact: Chemical engineers design processes to convert raw materials into useful products.',
+        'CS fact: The first high-level programming language was Fortran, released in 1957.',
+        'Bird fact: Many bird species can see ultraviolet light, which helps them find food and mates.',
+        'Chemistry fact: Carbon forms more compounds than any other element.',
+        'ChemE fact: Reaction engineering balances kinetics and transport to optimize production.',
+        'CS fact: A recently released model of Claude AI has been shown to blackmail people for its own interests.',
+        'Bird fact: Some birds, like the Arctic tern, migrate thousands of miles every year.',
+        'Chemistry fact: Catalysts speed up reactions without being consumed.',
+        'CS fact: Open-source software accelerated global collaboration in computing.'
+    ];
+
+    function showFactModal() {
+        if (document.querySelector('.modal-overlay')) return;
+        const idx = Math.floor(Math.random() * facts.length);
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        const box = document.createElement('div');
+        box.className = 'modal-box';
+
+        const msg = document.createElement('div');
+        msg.className = 'modal-message';
+        msg.textContent = facts[idx];
+
+        const coinImg = document.createElement('img');
+        coinImg.className = 'modal-coin';
+        coinImg.src = 'images/coin.png';
+        coinImg.alt = 'coin';
+
+        const okImg = document.createElement('img');
+        okImg.className = 'modal-ok-img';
+        okImg.src = 'images/okay.png';
+        okImg.alt = 'okay';
+        okImg.tabIndex = 0;
+
+        const hint = document.createElement('div');
+        hint.style.fontSize = '0.95rem';
+        hint.style.marginTop = '0.4rem';
+        hint.textContent = 'Click the image below (okay) to close. Click the bird again for another fact.';
+
+        box.appendChild(msg);
+        box.appendChild(coinImg);
+        box.appendChild(okImg);
+        box.appendChild(hint);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        okImg.addEventListener('click', () => {
+            overlay.remove();
+            document.body.style.overflow = '';
+        });
+        okImg.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); okImg.click(); }
+        });
+        setTimeout(() => { try { okImg.focus(); } catch (e) {} }, 40);
+    }
+
+    pagedollImg.addEventListener('click', showFactModal);
+    pagedollImg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showFactModal(); } });
 });
