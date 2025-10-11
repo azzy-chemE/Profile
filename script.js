@@ -340,4 +340,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     pagedollImg.addEventListener('click', showFactModal);
     pagedollImg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showFactModal(); } });
-});
+}});
